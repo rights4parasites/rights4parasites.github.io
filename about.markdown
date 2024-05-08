@@ -4,15 +4,13 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Som el laboratori de Biolgia Computacional del grup E3 (ecologia, evolució i etologia), de l'Institut Cavanilles de Biodiversitat i Biologia Evolutiva (ICBiBE), de la Universitat de València.
+Podeu més informació en la [web de l'ICBiBE](https://www.uv.es/uvweb/institut-universitari-cavanilles-biodiversitat-biologia/ca/institut-cavanilles-biodiversitat-biologia-evolutiva-1285893448913.html)
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+Podeu trobar el codi font d'aquesta pàgina a GitHub:
+[rights4parasites](https://github.com/rights4parasites/rights4parasites.github.io)
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+Podeu contactar amb nosaltres a travé dels correus:
+rights4parasites@cuc.anonaddy.com
+joiglu@valencia.edu
 
-
-[jekyll-organization]: https://github.com/jekyll
