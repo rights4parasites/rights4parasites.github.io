@@ -1,0 +1,126 @@
+---
+title: "¿Quién va con quién?"
+author: "Laboratori de Biologia Computacional"
+date: "Expociència - 11 de Maig de 2024"
+output: html_document
+---
+
+Los animales no viven solos en la naturaleza 🌲. Necesitan de otros para alimentarse o protegerse.
+
+Los parásitos son unos animales muy pequeños 🐛 que necesitan a otro animal 🐗, su hospedador, para poder vivir. El hospedador es un hotel de cinco estrellas para ellos ⭐
+
+Cada especie de parásito puede usar diferentes especies de hospedadores, pero estas infecciones no son al alzar.
+
+El ambiente en el que viven (por ejemplo, acuático 🌊 o terrestre 🏔️) o el tipo de hospedador al que llegan (por ejemplo, ave 🐦 o mamífero 🐗) determina si el parásito llega hasta su hospedador preferido o si se pueden quedar en él.
+
+Veamos como se relacionan entre ellos 6 tipos de parásitos y 6 tipos de hospedadores.
+
+```{r message=FALSE, warning=FALSE, collapse=TRUE, results='hide'}
+## Red de interacciones
+library(bipartite)
+comunidad<-matrix(ncol=6,nrow=6,
+                  c(1,1,0,0,0,1,
+                    1,1,0,0,0,1,
+                    1,1,0,0,0,1,
+                    1,1,0,0,0,1,
+                    0,0,1,1,1,0,
+                    0,0,1,1,1,0), byrow=TRUE)
+colnames(comunidad)<-c("Acanthocephala", "Annelida", "Cestoda", "Trematoda", "Nematoda", "Arthropoda")
+row.names(comunidad)<-c("Ave", "Reptil", "Mamífero", "Rana", "Pez", "Calamar")
+
+## Árboles
+library(phytools)
+Parasitos <- read.tree(text="((Arthropoda, Nematoda), (((Cestoda, Trematoda),Annelida),Acanthocephala));")
+Animales <- read.tree(text="(Calamar,(Pez,(Rana,(Mamífero,(Ave,Reptil)))));")
+
+## Asociaciones 
+num <- sum(comunidad)
+Asociaciones <- matrix(NA, nrow = num, ncol = 2)
+cuenta <- 1
+for (i in 1:length(rownames(comunidad))) {
+  for (j in 1:length(colnames(comunidad))){
+    if (comunidad[i,j]==1) {
+      a <- cbind(rownames(comunidad)[i], colnames(comunidad)[j])
+      Asociaciones[cuenta,] <- a
+      cuenta <- cuenta + 1
+    }
+  }
+}
+```
+
+```{r}
+comunidad
+```
+
+```{r, fig.height=6, fig.width=10}
+source("plotWeb.R")
+plotWeb(comunidad[,c(1,2,6,3,4,5)],
+         col.pred = "#440154FF",
+         col.prey = "#FDE725FF")
+```
+
+```{r, fig.height=6, fig.width=5}
+## Árbol 1
+Sistema<-phytools::cophylo(Animales, Parasitos, assoc = Asociaciones)
+phytools::plot.cophylo(Sistema, cexpt = 1, link.lwd = 0.5, link.lty = 1, fsize = 1, length.line = 0)
+phytools::tiplabels.cophylo(pch = 16, col = "#440154FF", cex = 4)
+phytools::tiplabels.cophylo(pch = 16, col = "#FDE725FF", cex = 4, which = "right")
+## Árbol 2
+#cophyloplot(Animales, Parasitos, assoc = Asociaciones,space = 32,
+#            length.line = 0, gap = -0.5, lwd = 1, lty = 2,
+#            show.tip.label = TRUE, font = 0)
+```
+
+Vemos que los hospedadores que viven en ambientes terrestres 🏔️ y que son grupos hermano,s comparten los mismos parásitos. Mientras los que viven en el ambiente acuático 🌊 tienen unos parásitos diferentes.
+
+## ¿Y si se juega un poco con ellos?
+
+Pero, ¿qué pasaría si los parásitos pudieran usar otros hospedadores? ¿Siguen los hospedadores terrestres y acuáticos teniendo diferentes parásitos?
+
+### **¡Tirad los dados!**
+
+```{r}
+## Red de interacciones
+dados<-matrix(ncol=6,nrow=6,
+              c(1,1,0,0,1,0,
+                0,0,0,0,0,1,
+                1,1,0,0,1,0,
+                1,1,0,0,0,1,
+                0,1,0,0,0,0,
+                0,0,0,1,0,0), byrow=TRUE)
+colnames(dados)<-c("Acanthocephala", "Annelida", "Cestoda", "Trematoda", "Nematoda", "Arthropoda")
+row.names(dados)<-c("Ave", "Reptil", "Mamífero", "Rana", "Pez", "Calamar")
+dados
+
+## Asociaciones 
+num <- sum(dados)
+Asociaciones <- matrix(NA, nrow = num, ncol = 2)
+cuenta <- 1
+for (i in 1:length(rownames(dados))) {
+  for (j in 1:length(colnames(dados))){
+    if (dados[i,j]==1) {
+      a <- cbind(rownames(dados)[i], colnames(dados)[j])
+      Asociaciones[cuenta,] <- a
+      cuenta <- cuenta + 1
+    }
+  }
+}
+Asociaciones <- unique(Asociaciones)
+```
+
+```{r, fig.height=6, fig.width=10}
+plotWeb(dados[,c(1,2,6,3,4,5)],
+         col.pred = "#440154FF",
+         col.prey = "#FDE725FF")
+```
+
+```{r, fig.height=6, fig.width=5}
+## Árbol 1
+Sistema<-phytools::cophylo(Animales, Parasitos, assoc = Asociaciones)
+phytools::plot.cophylo(Sistema, cexpt = 1, link.lwd = 0.5, link.lty = 1, fsize = 1, length.line = 0)
+phytools::tiplabels.cophylo(pch = 16, col = "#440154FF", cex = 4)
+phytools::tiplabels.cophylo(pch = 16, col = "#FDE725FF", cex = 4, which = "right")
+
+```
+
+## QR
