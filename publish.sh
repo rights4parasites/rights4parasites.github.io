@@ -22,7 +22,7 @@ if [[ -e $1 ]]; then
 
    URL=https://rights4parasites.github.io/$(echo $NEWNAME | sed "s|-|/|g")
    qrencode -s 6 -l H -o "URL.png" "$URL"
-   eog URL.png
+   eog URL.png &
 else
    echo "Què vols que faça de ${1}?"
    exit
