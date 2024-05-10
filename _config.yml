@@ -34,6 +34,11 @@ url: "https://rights4parasites.github.io" # the base hostname & protocol for you
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-polyglot
+languages: ["ca", "es", "en"]
+default_lang: "ca"
+exclude_from_localization: ["javascript", "images", "css", "public"]
+parallel_localization: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -45,8 +50,10 @@ plugins:
 #
 exclude:
   - General.Rmd
-  - RUN.html
-  - RUN.Rmd
+  - RUN-ca.html
+  - RUN-es.html
+  - RUN-ca.Rmd
+  - RUN-es.Rmd
   - plotWeb.R
 #   - .sass-cache/
 #   - .jekyll-cache/

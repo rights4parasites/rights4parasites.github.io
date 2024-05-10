@@ -1,7 +1,9 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: Sobre nosotros
+permalink: /about-es/
+lang: es
+page_id: about
 ---
 
 ![](images/grup3.png)

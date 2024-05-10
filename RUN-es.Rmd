@@ -1,0 +1,73 @@
+---
+title: "¿Quién va con quién?"
+author: ""
+date: "Expociencia - 11 de Mayo de 2024"
+output: html_document
+---
+
+¿Qué pasaría si los parásitos escogieran a sus hospedadores al azar? Una
+sofisticada simulación llevada a cabo por ... demuestra que en ese caso,
+una terrible posibilidad sería la siguiente:
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+## Red de interacciones
+library(kableExtra)
+dados <- matrix(ncol=6,nrow=6,
+                c(1,1,0,0,1,0,
+                  0,0,0,0,0,1,
+                  1,1,0,0,1,0,
+                  1,1,0,0,0,1,
+                  0,1,0,0,0,0,
+                  0,0,0,1,0,0), byrow=TRUE)
+
+colnames(dados) <- c('Garrapatas', 'Piojos', 'Sanguijuelas',
+                     'Acantocéfalo', 'Nemátodo', 'Tremátodo')
+row.names(dados) <- c('Pato', 'Tortuga', 'Jabalí',
+                          'Sardina', 'Gamba', 'Mejillón')
+
+kable(as.data.frame(dados)) %>% kable_styling()
+
+## Árboles
+library(phytools)
+Parasits <- read.tree(text = "(((Garrapatas, Piojos), Nemátodo), ((Tremátodo, Sanguijuelas), Acantocéfalo));")
+Hostes <- read.tree(text="((((Pato, Tortuga), Jabalí), Sardina), (Gamba, Mejillón));")
+
+## Asociaciones 
+num <- sum(dados)
+Asociaciones <- matrix(NA, nrow = num, ncol = 2)
+cuenta <- 1
+for (i in 1:length(rownames(dados))) {
+  for (j in 1:length(colnames(dados))){
+    if (dados[i,j]==1) {
+      a <- cbind(rownames(dados)[i], colnames(dados)[j])
+      Asociaciones[cuenta,] <- a
+      cuenta <- cuenta + 1
+    }
+  }
+}
+Asociaciones <- unique(Asociaciones)
+```
+
+```{r, fig.height=6, fig.width=10, echo=FALSE}
+source('plotWeb.R')
+plotWeb(dados, labsize = 2,
+        col.pred = "#440154FF",
+        col.prey = "#FDE725FF")
+```
+
+```{r, fig.height=6, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE}
+## Árbol 1
+Sistema <- suppressMessages(
+   phytools::cophylo(Hostes, Parasits, assoc = Asociaciones, verbose = FALSE)
+)
+
+
+plot(Sistema, link.lwd = 20, link.lty = 1, fsize = 2,
+     link.col = make.transparent('gray', 0.35),
+     edge.col = list(right=rep('#440154FF', 15),
+                     left=rep('#FDE725FF', 15)),
+     lwd = 15, pts=FALSE)
+```
+
+Para más información y para comparar este resultado con el esperado, puedes
+consultar [este enlace](/).

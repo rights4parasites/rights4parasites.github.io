@@ -3,7 +3,12 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
+lang: ca
+page_id: index
+permalink: /
 ---
+
+[CAS](/es) [ENG](/404)
 
 Els **paràsits** són organismes normalment petits que viuen dins o damunt d'altres: els seus hostes.
 Els paràsits no poden viure sense els hostes. Mentre que els hostes viuen millor sense paràsits, clar.
