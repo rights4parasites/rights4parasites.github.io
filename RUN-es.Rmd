@@ -1,6 +1,6 @@
 ---
 title: "¿Quién va con quién?"
-author: ""
+author: "[Página principal](/)"
 date: "Expociencia - 11 de Mayo de 2024"
 output: html_document
 ---
