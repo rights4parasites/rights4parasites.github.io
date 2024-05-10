@@ -22,5 +22,24 @@ la jornada Expociència 2024, hem volgut compartir algunes de les eines informà
 habitualment per descriure la xarxa de relacions entre un grup de paràstis i un grup d'hostes. Les
 relacions capritxoses entre els dos tipus d'espècies no són en absolut aleatòries. Per demostrar-ho,
 comparem una xarxa d'interaccions idealitzada, però realista, amb una d'aleatòria, generada pels propis
-participants en l'activitat. Podeu notar la diferència?
+participants en l'activitat. Podreu notar la diferència?
 
+La comunitat d'animals que imaginem és la següent:
+
+![](images/bipartit.png)
+
+On les barres grises enllacen paràsits amb hostes potencials. Per exemple, algunes caparres
+com *Hyalomma aegyptium*, o les sangoneres *Hirudo medicinalis* poden xuclar sang d'una ampla
+varietat de vertebrats. En canvi cada mamífer té la seua espècie de poll pròpia. Alguns
+paràsits, com ara els tremàtodes, alguns nemàtodes i també els acantocèfals solen tenir dos o més
+hostes: almenys un intermediari i un de definitiu. En aquesta xarxa d'interaccions s'aprecia
+que l'ambient en què viu un paràsit (per exemple, terrestre o marí) limita les espècies d'hoste
+a les quals pot arribar. 
+
+![](images/cophylo.png)
+
+Ací també tenim representades les relacions filogenètiques entre
+els hostes i entre els paràsits.
+
+Als enllaços següents trobareu les xarxes obtingudes pels
+participants mitjançant el llançament de dos daus.

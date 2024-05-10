@@ -116,7 +116,7 @@ plotWeb <- function (web, method = "cca", empty = FALSE, labsize = 1,
       hoffset <- 0
     }
     text(pred_x + pred_prop[i]/2, pred_y + y_width + hoehe + 
-           hoffset, colnames(web)[i], cex = 0.6 * labsize, offset = 0)
+           hoffset, colnames(web)[i], cex = 0.6 * labsize, offset = 0, adj = c(0.5, 0))
     pred_x <- pred_x + pred_prop[i] + pred_spacing
   }
   prey_x <- 0
@@ -140,7 +140,7 @@ plotWeb <- function (web, method = "cca", empty = FALSE, labsize = 1,
       hoffset <- hoehe
     }
     text(prey_x + prey_prop[i]/2, prey_y - y_width - hoffset, 
-         rownames(web)[i], cex = 0.6 * labsize, offset = 0)
+         rownames(web)[i], cex = 0.6 * labsize, offset = 0, adj = c(0.5, 1))
     prey_x <- prey_x + prey_prop[i] + prey_spacing
   }
   pred_x <- 0

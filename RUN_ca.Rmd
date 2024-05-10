@@ -1,0 +1,73 @@
+---
+title: "Qui va amb qui?"
+author: ""
+date: "Expociència - 11 de Maig de 2024"
+output: html_document
+---
+
+Què passaria si els paràsits triaren els seus hostes a l'atzar? Una sofisticada
+simulació duta a terme per ... demostra que en eixe cas, una terrible possibilitat
+seria la següent:
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+## Red de interacciones
+library(kableExtra)
+dados <- matrix(ncol=6,nrow=6,
+                c(1,1,0,0,1,0,
+                  0,0,0,0,0,1,
+                  1,1,0,0,1,0,
+                  1,1,0,0,0,1,
+                  0,1,0,0,0,0,
+                  0,0,0,1,0,0), byrow=TRUE)
+
+colnames(dados) <- c('Caparres', 'Polls', 'Sangoneres',
+                     'Acantocèfal', 'Nemàtode', 'Tremàtode')
+row.names(dados) <- c('Collverd', 'Tortuga', 'Senglar',
+                          'Sardina', 'Gamba', 'Clòtxina')
+
+kable(as.data.frame(dados)) %>% kable_styling()
+
+## Árboles
+library(phytools)
+Parasits <- read.tree(text = "(((Caparres, Polls), Nemàtode), ((Tremàtode, Sangoneres), Acantocèfal));")
+Hostes <- read.tree(text="((((Collverd, Tortuga), Senglar), Sardina), (Gamba, Clòtxina));")
+
+## Asociaciones 
+num <- sum(dados)
+Asociaciones <- matrix(NA, nrow = num, ncol = 2)
+cuenta <- 1
+for (i in 1:length(rownames(dados))) {
+  for (j in 1:length(colnames(dados))){
+    if (dados[i,j]==1) {
+      a <- cbind(rownames(dados)[i], colnames(dados)[j])
+      Asociaciones[cuenta,] <- a
+      cuenta <- cuenta + 1
+    }
+  }
+}
+Asociaciones <- unique(Asociaciones)
+```
+
+```{r, fig.height=6, fig.width=10, echo=FALSE}
+source('plotWeb.R')
+plotWeb(dados, labsize = 2,
+        col.pred = "#440154FF",
+        col.prey = "#FDE725FF")
+```
+
+```{r, fig.height=6, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE}
+## Árbol 1
+Sistema <- suppressMessages(
+   phytools::cophylo(Hostes, Parasits, assoc = Asociaciones, verbose = FALSE)
+)
+
+
+plot(Sistema, link.lwd = 20, link.lty = 1, fsize = 2,
+     link.col = make.transparent('gray', 0.35),
+     edge.col = list(right=rep('#440154FF', 15),
+                     left=rep('#FDE725FF', 15)),
+     lwd = 15, pts=FALSE)
+```
+
+Per a més informació i per comparar aquest resultat amb l'esperat, podeu
+consultar [aquest l'enllaç](/).
