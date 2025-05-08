@@ -1,24 +1,24 @@
 ---
 title: "Qui va amb qui?"
 author: "[Pàgina principal](/)"
-date: "Expociència - 11 de Maig de 2024"
+date: "Expociència - 10 de Maig de 2025"
 output: html_document
 ---
 
 Què passaria si els paràsits triaren els seus hostes a l'atzar? Una sofisticada
-simulació duta a terme per ... demostra que en eixe cas, una terrible possibilitat
+simulació duta a terme per Ignasi demostra que en eixe cas, una terrible possibilitat
 seria la següent:
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 ## Red de interacciones
 library(kableExtra)
 dados <- matrix(ncol=6,nrow=6,
-                c(1,1,0,0,1,0,
-                  0,0,0,0,0,1,
-                  1,1,0,0,1,0,
-                  1,1,0,0,0,1,
-                  0,1,0,0,0,0,
-                  0,0,0,1,0,0), byrow=TRUE)
+                c(0,0,0,0,0,1,          # Collverd
+                  0,0,0,0,1,0,          # Tortuga
+                  1,1,1,0,0,0,          # Senglar
+                  0,0,0,1,0,0,          # Sardina
+                  0,0,0,0,0,1,          # Gamba
+                  0,0,0,1,1,1), byrow=TRUE)  # Mejillón
 
 colnames(dados) <- c('Caparres', 'Polls', 'Sangoneres',
                      'Acantocèfal', 'Nemàtode', 'Tremàtode')
