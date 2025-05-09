@@ -23,8 +23,8 @@ email: rights4parasites@cuc.anonaddy.com
 description: >- # this means to ignore newlines until "baseurl:"
   El grup de biologia computacional de l'Institut Cavanilles de Biodiversitat i Biologia Evolutiva
   hem creat aquesta pàgina per compartir resultats de simulacions de xarxes d'interacció entre
-  hostes i paràsits. Aquestes simulacions es van realitzar manualment, amb daus de cartró ploma
-  artesanals, durant la celebració de la jornada divulgativa Expociència, el dia 11 de maig de 2024.
+  hostes i paràsits. Aquestes simulacions es realitzen manualment, amb daus de cartró ploma
+  artesanals, durant la celebració de la jornada divulgativa Expociència, des de 2024.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://rights4parasites.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: 
