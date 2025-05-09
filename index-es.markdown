@@ -24,7 +24,7 @@ en cambio, son mucho menos exigentes: la misma garrapata que se engancharía enc
 también se nos engancharía a nosotros.
 
 En la actividad desarrollada por el **Grupo de Biología Computacional** del *Institut Cavanilles
-de Biodiversitat i Biologia Evolutiva*, durante la jornada Expociencia 2024, hemos querido compartir
+de Biodiversitat i Biologia Evolutiva*, durante las jornadas de Expociencia des de 2024, hemos querido compartir
 algunas de las herramientas informáticas que se utilizan habitualmente para describir la red de
 relaciones entre un grupo de parásitos y un grupo de hospedadores. Las relaciones caprichosas entre
 los dos tipos de especies no son en absoluto aleatorias. Para demostrarlo, comparamos una red de

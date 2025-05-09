@@ -23,7 +23,7 @@ són molt menys exigents: la mateixa caparra que s'enganxaria encantada a un gos
 a nosaltres.
 
 En l'activitat desenvolupada pel **Grup de Biologia Computacional** de l'Institut Cavanilles, durant
-la jornada Expociència 2024, hem volgut compartir algunes de les eines informàtiques que s'utilitzen
+les jornades d'Expociència des de 2024, hem volgut compartir algunes de les eines informàtiques que s'utilitzen
 habitualment per descriure la xarxa de relacions entre un grup de paràstis i un grup d'hostes. Les
 relacions capritxoses entre els dos tipus d'espècies no són en absolut aleatòries. Per demostrar-ho,
 comparem una xarxa d'interaccions idealitzada, però realista, amb una d'aleatòria, generada pels propis
