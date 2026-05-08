@@ -1,24 +1,28 @@
 ---
 title: "Qui va amb qui?"
 author: "[Pàgina principal](/)"
-date: "Expociència - 10 de Maig de 2025"
+date: "Expociència - 9 de Maig de 2026"
 output: html_document
 ---
 
 Què passaria si els paràsits triaren els seus hostes a l'atzar? Una sofisticada
-simulació duta a terme per Mar i Sandra  demostra que en eixe cas, una terrible possibilitat
+simulació duta a terme per  demostra que en eixe cas, una terrible possibilitat
 seria la següent:
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 ## Red de interacciones
 library(kableExtra)
+#                 Ca Po Sa Ac Ne Tr
 dados <- matrix(ncol=6,nrow=6,
-                c(0,0,0,0,1,0,          # Collverd
-                  0,0,0,0,0,0,          # Tortuga
-                  0,0,0,1,0,0,          # Senglar
-                  1,0,0,1,0,0,          # Sardina
-                  0,0,1,0,0,0,          # Gamba
-                  0,0,1,0,0,0), byrow=TRUE)  # Clòtxina
+
+                c( 0, 0, 0, 0, 0, 0,    # Collverd
+                   0, 0, 0, 0, 0, 0,    # Tortuga
+                   0, 0, 0, 0, 0, 0,    # Senglar
+                   0, 0, 0, 0, 0, 0,    # Sardina
+                   0, 0, 0, 0, 0, 0,    # Gamba
+                   0, 0, 0, 0, 0, 0),   # Clòtxina
+
+                byrow=TRUE)
 
 colnames(dados) <- c('Caparres', 'Polls', 'Sangoneres',
                      'Acantocèfal', 'Nemàtode', 'Tremàtode')
@@ -48,20 +52,21 @@ for (i in 1:length(rownames(dados))) {
 Asociaciones <- unique(Asociaciones)
 ```
 
-```{r, fig.height=6, fig.width=10, echo=FALSE}
+```{r, fig.height=6, fig.width=10, echo=FALSE, warning=FALSE, message=FALSE}
 source('plotWeb.R')
 plotWeb(dados, labsize = 2,
         col.pred = "#440154FF",
         col.prey = "#FDE725FF")
 ```
 
-```{r, fig.height=6, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, fig.height=6, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 ## Árbol 1
 Sistema <- suppressMessages(
    phytools::cophylo(Hostes, Parasits, assoc = Asociaciones, verbose = FALSE)
 )
+```
 
-
+```{r, fig.height=6, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE}
 plot(Sistema, link.lwd = 20, link.lty = 1, fsize = 2,
      link.col = make.transparent('gray', 0.35),
      edge.col = list(right=rep('#440154FF', 15),

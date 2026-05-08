@@ -1,7 +1,7 @@
 ---
 title: "¿Quién va con quién?"
 author: "[Página principal](/)"
-date: "Expociencia - 10 de Mayo de 2025"
+date: "Expociencia - 9 de Mayo de 2026"
 output: html_document
 ---
 
@@ -12,13 +12,17 @@ una terrible posibilidad sería la siguiente:
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 ## Red de interacciones
 library(kableExtra)
+#   
 dados <- matrix(ncol=6,nrow=6,
-                c(1,1,0,0,1,0,
-                  0,0,0,0,0,1,
-                  1,1,0,0,1,0,
-                  1,1,0,0,0,1,
-                  0,1,0,0,0,0,
-                  0,0,0,1,0,0), byrow=TRUE)
+                
+                c( 0, 0, 0, 0, 0, 0,    # Collverd
+                   0, 0, 0, 0, 0, 0,    # Tortuga
+                   0, 0, 0, 0, 0, 0,    # Senglar
+                   0, 0, 0, 0, 0, 0,    # Sardina
+                   0, 0, 0, 0, 0, 0,    # Gamba
+                   0, 0, 0, 0, 0, 0),   # Clòtxina
+                
+         byrow=TRUE)
 
 colnames(dados) <- c('Garrapatas', 'Piojos', 'Sanguijuelas',
                      'Acantocéfalo', 'Nemátodo', 'Tremátodo')
@@ -55,13 +59,14 @@ plotWeb(dados, labsize = 2,
         col.prey = "#FDE725FF")
 ```
 
-```{r, fig.height=6, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, fig.height=6, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 ## Árbol 1
 Sistema <- suppressMessages(
    phytools::cophylo(Hostes, Parasits, assoc = Asociaciones, verbose = FALSE)
 )
+```
 
-
+```{r, fig.height=6, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE}
 plot(Sistema, link.lwd = 20, link.lty = 1, fsize = 2,
      link.col = make.transparent('gray', 0.35),
      edge.col = list(right=rep('#440154FF', 15),
