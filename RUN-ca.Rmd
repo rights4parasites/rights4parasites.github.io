@@ -5,9 +5,10 @@ date: "Expociència - 9 de Maig de 2026"
 output: html_document
 ---
 
-Què passaria si els paràsits triaren els seus hostes a l'atzar? Una sofisticada
-simulació duta a terme per  demostra que en eixe cas, una terrible possibilitat
-seria la següent:
+Què passaria si els paràsits triaren els seus hostes a l'atzar?
+Una sofisticada simulació duta a terme per 
+demostra que en eixe cas, una terrible possibilitat seria la
+següent:
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 ## Red de interacciones

@@ -2,8 +2,8 @@
 #
 # Recomane afegir la clau a l'agent ssh:
 #
-#  ssh-agent -t 15000 /bin/bah
-#  ssh-add
+#  eval "$(ssh-agent -s)"
+#  ssh-add ~/.ssh/id_ed25519
 
 if [[ -z $1 || $1 == "-h" ]]; then
    echo "Usage: publish.sh <file.html>"
